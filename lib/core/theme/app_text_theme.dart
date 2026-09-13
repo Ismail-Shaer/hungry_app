@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 /// Central text styles for the whole app.
 ///
@@ -75,9 +74,14 @@ class AppTextTheme {
         fontSize: 13.sp,
         fontWeight: FontWeight.w600,
       ), // tiny links
-    ).apply(bodyColor: _defaultColor, displayColor: _defaultColor);
+    ).apply(
+      bodyColor: _defaultColor,
+      displayColor: _defaultColor,
+      // Fredoka is bundled locally (see pubspec.yaml). Applying it here keeps
+      // every style's size/weight/color while rendering in the brand font.
+      fontFamily: 'Fredoka',
+    );
 
-    // Apply the Fredoka font to every style while keeping sizes/weights/colors.
-    return GoogleFonts.fredokaTextTheme(textTheme);
+    return textTheme;
   }
 }
